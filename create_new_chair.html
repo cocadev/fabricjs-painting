@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Chair Choose</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="sweetalert2/sweetalert2.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="sweetalert2/sweetalert2.min.js"></script>     
+    <script type="text/javascript" src="fabric/fabric.min.js"></script>
+    <style>
+        .label-color {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light" style="background-color: #5bc0de;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="logo.gif" alt="Chair Logo" width="40" height="30" />
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">File <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="create_new_chair.html">Create New</a></li>
+                                <li><a href="index.html">Exit</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Settings</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4" id="information1">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-info">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false"
+                                aria-controls="collapseOne">
+                                Add to Patient Data
+                                </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="name">Patient Name</label>
+                                <input type="name" class="form-control" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="patient_id">Patient ID:</label>
+                                <input type="text" class="form-control" id="patient_id">
+                            </div>
+                            <div class="form-group">
+                                <label for="back_height">TORSO Height(cm):</label>
+                                <input type="number" class="form-control" id="back_height">
+                            </div>
+                            <div class="form-group">
+                                <!--<label for="back_width">TORSO Width(cm)</label>-->
+                                <strong><h5>TORSO Width(cm)</h5></strong>
+                                <label for="torso_shoulder">SHOULDER(T2):</label>
+                                <input type="number" class="form-control" id="torso_shoulder">
+
+                                <label for="torso_waist">WAIST(T12):</label>
+                                <input type="number" class="form-control" id="torso_waist">
+
+                                <label for="torso_pelvis">PELVIS(L4):</label>
+                                <input type="number" class="form-control" id="torso_pelvis">
+                            </div>
+                            <div class="form-group">
+                                <label for="hip_length1">Hip Length(cm):</label>
+                                <input type="number" class="form-control " id="hip_length">
+                            </div>
+                            <!--<div class="form-group">
+                                <label for="customer_number">Customer Number:</label>
+                                <input type="number" class="form-control " id="customer_number">
+                            </div>-->
+                            <div class="form-group">
+                                <label for="customer_image">Customer Image:</label>
+                                <!--<input type="file" name="customer_image" id="customer_image" accept="image/*">-->
+                                <input type="file" name="customer_image" accept="image/*" id="image_path" onchange="loadFile(event)">
+                                <img id="customer_image" class="img-responsive"/>
+                                <script>
+                                var loadFile = function(event) {
+                                    var customer_image = document.getElementById('customer_image');
+                                    customer_image.src = URL.createObjectURL(event.target.files[0]);
+                                    var customer_image = document.getElementById('customer_image1');
+                                    customer_image1.src = URL.createObjectURL(event.target.files[0]);
+                                };
+                                </script>
+                            </div>
+                            <div class="form-group">
+                                <label for="sitting_hours">No of Sitting Hours Per Day:</label>
+                                <input type="number" class="form-control " id="sitting_hours">
+                            </div>
+                            <div class="form-group">
+                                <label for="nature_of_work">Nature of Work:</label>
+                                <select class="form-control" id="nature_of_work">
+                                    <option>Office</option>
+                                    <option>Car(Driving)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="additional_info1">Additional Info:</label>
+                                <input type="text" class="form-control" id="additional_info1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+                                aria-controls="collapseTwo">
+                                Add Medical & Orthopedic Information Section
+                                </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="general">General:</label>
+                                <select class="form-control" id="general">
+                                    <option>Diabetics</option>
+                                    <option>Sweat</option>
+                                    <option>Alergy</option>
+                                </select>
+                            </div>
+                            <!--<div class="form-group">
+                                <label for="physical_activity">Regular Physical Activity:</label>
+                                <select class="form-control" id="physical_activity">
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="activity">
+                                <label for="which_activity">Which Activity:</label>
+                                <input type="text" class="form-control" id="which_activity">
+                            </div>-->
+                            <div class="form-group">
+                                <label for="disc_herniation">Disc Herniation:</label>
+                                <select class="form-control" id="disc_herniation">
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                    <option>Do Not Know</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="radiating_symptoms">Radiating Symptoms:</label>
+                                <select class="form-control" id="radiating_symptoms">
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+
+                            <div id="radiating_symptoms_yes">
+                                <div class="form-group">
+                                    <label for="choose_location">Choose Location:</label>
+                                    <select class="form-control" id="choose_location">
+                                        <option>BUTTOCK</option>
+                                        <option>HIP</option>
+                                        <option>THIGH</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="stenosis">Stenosis:</label>
+                                <select class="form-control" id="stenosis">
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                    <option>Do Not Know</option>
+                                </select>
+                            </div>
+                            <div id="stenosis_yes">
+                                <div class="form-group">
+                                    <label for="height_level">Height Level:</label>
+                                    <input type="number" class="form-control " id="height_level">
+                                </div>
+                                <div class="form-group">
+                                    <label for="hardware_severiity">Hardware Severity:</label>
+                                    <input type="number" class="form-control " id="hardware_severiity">
+                                </div>
+                            </div>
+                        
+                            <div class="form-group">
+                                <label for="hyperlordosis">Hyperlordosis:</label>
+                            <select class="form-control" id="hyperlordosis">
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="kyphosis">Kyphosis::</label>
+                                <select class="form-control" id="kyphosis">
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="scoliosis">Scoliosis:</label>
+                                <select class="form-control" id="scoliosis">
+                                    <option>Right</option>
+                                    <option>Left</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="pain">Pain:</label>
+                                <select class="form-control" id="pain">
+                                    <option>Neck</option>
+                                    <option>Thorax</option>
+                                    <option>Lumbar</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="additional_info2">Additional Info:</label>
+                                <input type="text" class="form-control" id="additional_info2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false"
+                                aria-controls="collapseFour">
+                                Add BACKREST Section
+                                </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="chair_length">BACKREST  Length(cm):</label>
+                                <input type="number" class="form-control " id="chair_length">
+                            </div>
+                            <div class="form-group">
+                                <label for="chair_width">BACKREST  Width(cm):</label>
+                                <input type="number" class="form-control " id="chair_width">
+                            </div>
+                            <div class="form-group">
+                                <label for="seat_length">SEAT DEPTH(cm):</label>
+                                <input type="number" class="form-control " id="seat_length">
+                            </div>
+                            <div class="form-group">
+                                <label for="seat_width">Width of Seat(cm):</label>
+                                <input type="number" class="form-control " id="seat_width">
+                            </div>
+                            <div class="form-group">
+                                <label for="chair_recline">Recline:</label>
+                                <select class="form-control" id="chair_recline">
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+
+
+                <div class="panel panel-info">
+                    <div class="panel-heading" role="tab" id="headingFour">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false"
+                                aria-controls="collapseFour">
+                                Add Shippiment Details
+                                </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="address">Address:</label>
+                                <input type="text" class="form-control" id="address">
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City:</label>
+                                <input type="text" class="form-control" id="city">
+                            </div>
+                            <div class="form-group">
+                                <label for="post_office">Post Office:</label>
+                                <input type="text" class="form-control" id="post_office">
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country:</label>
+                                <input type="text" class="form-control" id="country">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-info" id="chair_creation">Generate</button>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" style="display:none; margin-top: 40px;" id="information2">
+            <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-info">
+                    <div class="panel-heading" role="tab" id="headingOne1">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="false"
+                                aria-controls="collapseOne1">
+                                Add to Patient Data
+                                </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne1">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <img id="customer_image1" class="img-responsive"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Patient Name:</label>
+                                <p class="label-color" id="name1">Name</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="patient_id1">Patient ID:</label>
+                                <p class="label-color" id="patient_id1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="back_height1">TORSO Height(cm):</label>
+                                <p class="label-color" id="back_height1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <strong><h5>TORSO Width(cm)</h5></strong>
+                                <label for="torso_shoulder1">SHOULDER(T2):</label>
+                                <p class="label-color" id="torso_shoulder1">NA</p>
+
+                                <label for="torso_waist1">WAIST(T12):</label>
+                                <p class="label-color" id="torso_waist1">NA</p>
+
+                                <label for="torso_pelvis1">PELVIS(L4):</label>
+                                <p class="label-color" id="torso_pelvis1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="hip_length1">Hip Length(cm):</label>
+                                <p class="label-color" id="hip_length1">NA</p>
+                            </div>
+                            <!--<div class="form-group">
+                                <label for="customer_number1">Customer Number:</label>
+                                <p class="label-color" id="customer_number1">
+                            </div>-->
+                            <div class="form-group">
+                                <label for="sitting_hours1">No of Sitting Hours Per Day:</label>
+                                <p class="label-color" id="sitting_hours1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="nature_of_work1">Nature of Work:</label>
+                                <p class="label-color" id="nature_of_work1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="additional_info11">Additional Info:</label>
+                                <p class="label-color" id="additional_info11">NA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading" role="tab" id="headingTwo2">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo2" aria-expanded="false"
+                                aria-controls="collapseTwo2">
+                                Add Medical & Orthopedic Information Section
+                                </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo2">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="general1">General:</label>
+                                <p class="label-color" id="general1">NA</p>
+                            </div>
+                            <!--<div class="form-group">
+                                <label for="physical_activity1">Regular Physical Activity:</label>
+                                <p class="label-color" id="physical_activity1">NA</p>
+                            </div>
+                            <div class="form-group" id="activity">
+                                <label for="which_activity1">Which Activity:</label>
+                                <p class="label-color" id="which_activity1">NA</p>
+                            </div>-->
+                            <div class="form-group">
+                                <label for="disc_herniation1">Disc Herniation:</label>
+                                <p class="label-color" id="disc_herniation1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="radiating_symptoms1">Radiating Symptoms:</label>
+                                <p class="label-color" id="radiating_symptoms1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="choose_location1">Choose Location:</label>
+                                <p class="label-color" id="choose_location1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="stenosis1">Stenosis:</label>
+                                <p class="label-color" id="stenosis1">NA</p>
+                            </div>
+                            <div id="stenosis_yes1"  styel="display:none">
+                                <div class="form-group">
+                                    <label for="height_level1">Height Level:</label>
+                                    <p class="label-color" id="height_level1">NA</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="hardware_severiity1">Hardware Severity:</label>
+                                    <p class="label-color" id="hardware_severiity1">NA</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="hyperlordosis1">Hyperlordosis:</label>
+                                <p class="label-color" id="hyperlordosis1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="kyphosis1">Kyphosis:</label>
+                                <p class="label-color" id="kyphosis1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="scoliosis1">Scoliosis:</label>
+                                <p class="label-color" id="scoliosis1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="pain1">Pain:</label>
+                                <p class="label-color" id="pain1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="additional_info22">Additional Info:</label>
+                                <p class="label-color" id="additional_info22">NA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-info">
+                    <div class="panel-heading" role="tab" id="headingThree3">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree3" aria-expanded="false"
+                                aria-controls="collapseThree3">
+                                Add Chair Section
+                                </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree3">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="chair_length1">BACKREST Length(cm):</label>
+                                <p class="label-color" id="chair_length1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="chair_width1">BACKREST Width(cm):</label>
+                                <p class="label-color" id="chair_width1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="seat_length1">SEAT DEPTH(cm):</label>
+                                <p class="label-color" id="seat_length1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="seat_width1">Width of Seat(cm):</label>
+                                <p class="label-color" id="seat_width1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="chair_recline1">Recline:</label>
+                                <p class="label-color" id="chair_recline1">NA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading" role="tab" id="headingFour4">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseFour4" aria-expanded="false"
+                                aria-controls="collapseFour4">
+                                Add Shipment Details
+                                </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour4">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="address1">Address:</label>
+                                <p class="label-color address1" id="address1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="city1">City:</label>
+                                <p class="label-color city1" id="city1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="post_office1">Post Office:</label>
+                                <p class="label-color post_office1" id="post_office1">NA</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="country1">Country:</label>
+                                <p class="label-color country1" id="country1">NA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display:none;" id="result">
+            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1" style="margin-right: -20px; margin-top: 40px;">
+                <div class="text-right">
+                    <img src="side-logo.png" class="img-rounded img-responsive" id="logo" alt="Side logo" height="620"/>
+                </div>
+            </div>
+
+            <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5">
+                <div class="text-center" style="margin-bottom: 5px;">
+                    <button type="button" class="btn btn-success" id="editor_btn"><span class="glyphicon glyphicon-pencil"></span>  Editor</button>
+                    <button type="button" class="btn btn-success" id="viewer_btn" style="display:none"><span class="glyphicon glyphicon-eye-open"></span>  Viewer</button>
+                    <button type="button" class="btn btn-info" id="plus"><span class="glyphicon glyphicon-plus"></span></button>
+                    <button type="button" class="btn btn-danger" id="minus"><span class="glyphicon glyphicon-minus"></span></button>
+                    
+                
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="panel-title"><span id="person_name">Name</span></div>
+                    </div>
+                    <div class="panel-body" id="viewer">
+                        <div class="text-center" id="chair1" style="display:none">
+                            <img src="image1.png" class="img-rounded img-responsive" alt="Recommended Chair">
+                        </div>
+                        <div class="text-center" id="chair2" style="display:none">
+                            <img src="image2.png" class="img-rounded img-responsive" alt="Recommended Chair">
+                        </div>
+                        <div class="text-center" id="chair3" style="display:none">
+                            <img src="image3.png" class="img-rounded img-responsive" alt="Recommended Chair">
+                        </div>
+                        <div class="text-center" id="chair4" style="display:none">
+                            <img src="image4.png" class="img-rounded img-responsive" alt="Recommended Chair">
+                        </div>
+                        <div class="text-center" id="chair5" style="display:none">
+                            <img src="image5.png" class="img-rounded img-responsive" alt="Recommended Chair">
+                        </div>
+                        <div class="text-center" style="margin-top:10px" id="cancel_submit">
+                            <button type="button" class="btn btn-danger" id="cancel">Cancel</button>
+                            <button type="button" class="btn btn-success" id="submit">Submit</button>
+                        </div>
+                    </div>
+                    <div class="panel-body" id="editor" style="display:none" >
+                       
+                         <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                           
+                            <div class="panel panel-primary">
+                                    
+                                    <div class="panel-heading">
+                                        <div class="panel-title"><span>Name</span></div>
+                                    </div>
+                                    <div class="canvas-container" style="width: 200px; height: 200px; position: relative; user-select: none;">
+                                        <canvas id="top_c" width="225" height="225" style="border: 1px solid rgb(204, 204, 204); position: absolute; width: 200px; height: 200px; left: 0px; top: 0px; touch-action: none; user-select: none;" class="lower-canvas"></canvas>
+                                        
+                                    </div>
+                                
+                                
+                                </div>
+                           
+                            </div>
+                            
+                            
+                         </div>
+                         <div class="row">
+                             <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                    <div class="panel panel-primary">
+                                        
+                                        <div class="panel-heading">
+                                            <div class="panel-title"><span>Top View</span></div>
+                                        </div>
+                                        <div class="canvas-container" style="width: 200px; height: 200px; position: relative; user-select: none;">
+                                            <canvas id="c" width="225" height="225" style="border: 1px solid rgb(204, 204, 204); position: absolute; width: 200px; height: 200px; left: 0px; top: 0px; touch-action: none; user-select: none;" class="lower-canvas"></canvas>
+                                            
+                                        </div>
+                                    
+                                    
+                                    </div>
+                                </div>
+                         </div>
+                       
+                       
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" style="margin-top: 40px;">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="panel-title">Manufacturer Information</div>
+                    </div>
+                    <div class="panel-body">
+                         <div class="form-group">
+                             <div><label for="color">Selected Color:</label></div>
+                             <!--<div><span id="color">COLOR</span></div>-->
+                             <div id="red" style="display:none">
+                                <canvas id="color" width="40" height="40" style="background: red;">
+                             </div>
+                             <div id="green" style="display:none">
+                                <canvas id="color" width="40" height="40" style="background: green;">
+                             </div>
+                             <div id="blue" style="display:none">
+                                <canvas id="color" width="40" height="40" style="background: blue;">
+                             </div>
+                             <div id="yellow" style="display:none">
+                                <canvas id="color" width="40" height="40" style="background: yellow;">
+                             </div>
+                             <div id="black" style="display:none">
+                                <canvas id="color" width="40" height="40" style="background: black;">
+                             </div>
+                             <div id="brown" style="display:none">
+                                <canvas id="color" width="40" height="40" style="background: brown;">
+                             </div>
+                             
+                             
+                        </div>
+                        <div class="form-group">
+                            <label for="material">Selected Material:</label>
+                            <p>Nature of Work: <span id="nature_of_work2"></span></p>
+                            <p>General: <span id="general2"></span></p>
+                            <!--<p>Regular Physical Activity: <span id="physical_activity2"></span></p>-->
+                            <p>Pain: <span id="pain2"></span></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Measurement:</label>
+                            <p>BACKREST Length(cm): <span id="chair_length2"></span></p>
+                            <p>BACKREST Width(cm): <span id="chair_width2"></span></p>
+                            <!--<p>BACKREST  Backrest(cm):<span id="chair_backrest2"></span></p>-->
+                            <p>Length of Seat(cm): <span id="seat_length2"></span></p>
+                            <p>Width of Seat(cm): <span id="seat_width2"></span></p>
+                            <p>Recline: <span id="chair_recline2"></span></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Shipment Details:</label>
+                            <p>Address: <span id="address2"></span></p>
+                            <p>City: <span id="city2"></span></p>
+                            <p>Post Office: <span id="post_office2"></span></p>
+                            <p>Country: <span id="country2"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="chair_creation.js"></script>
+        <script src="editor.js"></script>
+
+</body>
+
+</html>
